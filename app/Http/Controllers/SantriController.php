@@ -12,8 +12,11 @@ class SantriController extends Controller
         return view('santri.create');
     }
 
-    public function store(Request $roquest)
+    public function store(Request $request)
     {
+
+        // dd($request->all());
+
         $nama           = $request->nama;
         $umur           = $request->umur;
         $alamat         = $request->alamat;
@@ -25,5 +28,10 @@ class SantriController extends Controller
             'alamat'            => $alamat,
             'jenis_kelamin'     => $jenis_kelamin,
         ]);
+
+        // return view('santri.create');
+        // return redirect()->url('santri/create');
+        return redirect()->route('santri.create');
     }
+
 }

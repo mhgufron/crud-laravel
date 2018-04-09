@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('santri/create', 'SantriController@create');
-Route::post('santri', 'SantriController@store');
+Route::get('santri/create', 'SantriController@create')->name('santri.create');
+Route::post('santri', 'SantriController@store')->name('santri.store');
