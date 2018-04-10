@@ -16,6 +16,12 @@ class SantriController extends Controller
     {
 
         // dd($request->all());
+        $request->validate([
+            'nama' => 'required',
+            'umur' => 'required',
+            'alamat' => 'required',
+            'jenis_keramin' => 'required',
+        ]);
 
         $nama           = $request->nama;
         $umur           = $request->umur;
