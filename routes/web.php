@@ -11,5 +11,10 @@
 |
 */
 
-Route::get('santri/create', 'SantriController@create')->name('santri.create');
-Route::post('santri', 'SantriController@store')->name('santri.store');
+Route::get('santris', 'SantriController@index')->name('santri.index');
+Route::get('santris/create', 'SantriController@create')->name('santri.create');
+Route::post('santris', 'SantriController@store')->name('santri.store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

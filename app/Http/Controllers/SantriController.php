@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class SantriController extends Controller
 {
+    public function index()
+    {
+        $santris = Santri::all();
+
+        return view('santri.index', compact('santris'));
+    }
+
     public function create()
     {
         return view('santri.create');
@@ -16,6 +23,8 @@ class SantriController extends Controller
     {
 
         // dd($request->all());
+
+        // Validasi Input Form
         $request->validate([
             'nama' => 'required',
             'umur' => 'required',
