@@ -61,4 +61,20 @@ class SantriController extends Controller
         return redirect()->route('santri.index');
     }
 
+    public function show($id)
+    {
+        $santri = Santri::findOrFail($id);
+        // dd($santri);
+
+        return view('santri.show', compact('santri'));
+
+    }
+
+    public function edit($id)
+    {
+        $santri = Santri::findOrFail($id);
+
+        return view('santri.edit', compact('santri'));
+    }
+
 }
