@@ -77,4 +77,38 @@ class SantriController extends Controller
         return view('santri.edit', compact('santri'));
     }
 
+    public function update(Request $request, $id)
+    {
+
+        $santri = Santri::findOrFail($id);
+
+        // Validasi Input Form
+        $request->validate([
+            'nama'          => 'required',
+            'umur'          => 'required|integer',
+            'alamat'        => 'required',
+            'jenis_kelamin' => 'required',
+        ]);
+
+        $santri->nama = $request->nama;
+        $santri->umur = $request->umur;
+        $santri->alamat = $request->alamat;
+        $santri->jenis_kelamin = $request->jenis_kelamin;
+        $santri->save();
+
+
+
+
+        return redirect()->route('santri.index');
+    }
+
+    public function destroy($id)
+    {
+        // dd($id);
+        $santri = Santri::findOrFail($id);
+        $santri->delete();
+
+        return redirect()->route('santri.index');
+    }
+
 }

@@ -8,6 +8,9 @@
     {{-- {{ csrf_field() }} --}}
 
     @csrf
+    @method('PATCH')
+    {{-- {{ method_field('PATCH')}} --}}
+
     <input type="text" name="nama" placeholder="Edit Name" value="{{ $santri->nama }}"><br>
     @if ($errors->has('nama'))
         <strong>{{ $errors->first('nama') }}</strong><br>
@@ -24,6 +27,6 @@
     @if ($errors->has('jenis_kelamin'))
         <strong>{{ $errors->first('jenis_kelamin') }}</strong><br>
     @endif
-    <button type="submit" name="button">Simpan</button>
+    <button type="submit" name="button">Update</button>
     <a href="{{ route('santri.index') }}">Batal</a>
 </form>
