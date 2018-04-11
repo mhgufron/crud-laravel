@@ -26,27 +26,39 @@ class SantriController extends Controller
 
         // Validasi Input Form
         $request->validate([
-            'nama' => 'required',
-            'umur' => 'required',
-            'alamat' => 'required',
-            'jenis_keramin' => 'required',
+            'nama'          => 'required',
+            'umur'          => 'required|integer',
+            'alamat'        => 'required',
+            'jenis_kelamin' => 'required',
         ]);
 
-        $nama           = $request->nama;
-        $umur           = $request->umur;
-        $alamat         = $request->alamat;
-        $jenis_kelamin  = $request->jenis_kelamin;
+        // // cara 1
+        // $nama           = $request->nama;
+        // $umur           = $request->umur;
+        // $alamat         = $request->alamat;
+        // $jenis_kelamin  = $request->jenis_kelamin;
+        //
+        // Santri::create([
+        //     'nama'              => $nama,
+        //     'umur'              => $umur,
+        //     'alamat'            => $alamat,
+        //     'jenis_kelamin'     => $jenis_kelamin,
+        // ]);
+        //
+        // // cara2
+        // $data['nama'] = $request->nama;
+        // $data['umur'] = $request->umur;
+        // $data['alamat'] = $request->alamat;
+        // $data['jenis_kelamin'] = $request->jenis_kelamin;
+        //
+        // Santri::create($data);
 
-        Santri::create([
-            'nama'              => $nama,
-            'umur'              => $umur,
-            'alamat'            => $alamat,
-            'jenis_kelamin'     => $jenis_kelamin,
-        ]);
+        // cara 3
+        Santri::create($request->all());
 
         // return view('santri.create');
         // return redirect()->url('santri/create');
-        return redirect()->route('santri.create');
+        return redirect()->route('santri.index');
     }
 
 }
