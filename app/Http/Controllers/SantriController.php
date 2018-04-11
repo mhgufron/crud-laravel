@@ -90,14 +90,24 @@ class SantriController extends Controller
             'jenis_kelamin' => 'required',
         ]);
 
-        $santri->nama = $request->nama;
-        $santri->umur = $request->umur;
-        $santri->alamat = $request->alamat;
-        $santri->jenis_kelamin = $request->jenis_kelamin;
-        $santri->save();
+        // cara 1
+        // $santri->nama = $request->nama;
+        // $santri->umur = $request->umur;
+        // $santri->alamat = $request->alamat;
+        // $santri->jenis_kelamin = $request->jenis_kelamin;
+        // $santri->save();
 
+        // cara 2
+        // $santri->update([
+        //     'nama' => $request->nama,
+        //     'umur' => $request->umur,
+        //     'alamat' => $request->alamat,
+        //     'jenis_kelamin' => $request->jenis_kelamin,
+        // ]);
 
+        // cara 3
 
+        $santri->update($request->all());
 
         return redirect()->route('santri.index');
     }
